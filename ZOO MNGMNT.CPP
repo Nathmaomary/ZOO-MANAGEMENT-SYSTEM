@@ -303,6 +303,42 @@ void Zoo::removeAnimalByName(std::string name) {
     }
     std::cout << "Animal " << name << " not found.\n";
 }
+if (choice == 7) {
+    std::string name;
+    std::cout << "Enter animal name to remove: ";
+    std::cin >> name;
+    zoo.removeAnimalByName(name);
+}
+
+#include <fstream>
+
+void Zoo::saveToFile(const std::string& filename) {
+    std::ofstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file for writing!" << std::endl;
+        return;
+    }
+
+    file << "Animals:\n";
+    for (const auto& animal : animals) {
+        file << animal.getName() << ", " << animal.getSpecies() << ", " << animal.getAge() << "\n";
+    }
+
+    file << "Employees:\n";
+    for (const auto& employee : employees) {
+        file << employee.getName() << ", " << employee.getRole() << ", " << employee.getSalary() << "\n";
+    }
+
+    file << "Exhibits:\n";
+    for (const auto& exhibit : exhibits) {
+        file << exhibit.getName() << ", " << exhibit.getSize() << "\n";
+    }
+
+    file.close();
+    std::cout << "Zoo data saved to " << filename << std::endl;
+}
+
+
 
 
 
