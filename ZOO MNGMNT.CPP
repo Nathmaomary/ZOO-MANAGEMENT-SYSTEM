@@ -394,6 +394,21 @@ if (choice == 8) {
     zoo.loadFromFile(filename);
 }
 
+void Zoo::searchAnimalByName(std::string name) {
+    bool found = false;
+    for (const auto& animal : animals) {
+        if (animal.getName() == name) {
+            animal.displayInfo();
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        std::cout << "Animal " << name << " not found.\n";
+    }
+}
+
+
 
 
 
