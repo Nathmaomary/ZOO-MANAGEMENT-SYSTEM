@@ -182,6 +182,33 @@ public:
         }
     }
 };
+class Zoo {
+private:
+    std::vector<Animal> animals;
+    std::vector<Employee> employees;
+    std::vector<Exhibit> exhibits;
+
+public:
+    void addAnimal(Animal newAnimal) {
+        animals.push_back(newAnimal);
+    }
+
+    void addEmployee(Employee newEmployee) {
+        employees.push_back(newEmployee);
+    }
+
+    void addExhibit(Exhibit newExhibit) {
+        exhibits.push_back(newExhibit);
+    }
+
+    void displayAllExhibits() {
+        for (const auto& exhibit : exhibits) {
+            exhibit.displayInfo();
+            std::cout << "------------------\n";
+        }
+    }
+};
+
 
 
 
