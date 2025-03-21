@@ -407,6 +407,27 @@ void Zoo::searchAnimalByName(std::string name) {
         std::cout << "Animal " << name << " not found.\n";
     }
 }
+if (choice == 10) {
+    std::string name;
+    std::cout << "Enter animal name to search: ";
+    std::cin >> name;
+    zoo.searchAnimalByName(name);
+}
+void Zoo::displaySummary() {
+    std::cout << "Zoo Summary:\n";
+    std::cout << "Total Animals: " << animals.size() << "\n";
+    std::cout << "Total Employees: " << employees.size() << "\n";
+    std::cout << "Total Exhibits: " << exhibits.size() << "\n";
+
+}
+if (choice == 11) {
+    zoo.displaySummary();
+}
+
+
+
+
+
 
 
 
