@@ -74,6 +74,22 @@ int main() {
     return 0;
 }
 
+class Employee {
+private:
+    std::string name;
+    std::string role;
+    double salary;
+
+public:
+    Employee(std::string name, std::string role, double salary)
+        : name(name), role(role), salary(salary) {}
+
+    void displayInfo() {
+        std::cout << "Employee Name: " << name << "\nRole: " << role << "\nSalary: $" << salary << std::endl;
+    }
+};
+
+
 
 
 
