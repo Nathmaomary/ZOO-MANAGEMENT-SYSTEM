@@ -262,6 +262,38 @@ int main() {
     return 0;
 }
 
+#include <iostream>
+#include <limits>
+
+int getValidIntInput() {
+    int input;
+    while (true) {
+        std::cin >> input;
+        if (std::cin.fail() || input <= 0) {
+            std::cout << "Invalid input! Please enter a positive integer: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        } else {
+            return input;
+        }
+    }
+}
+
+double getValidDoubleInput() {
+    double input;
+    while (true) {
+        std::cin >> input;
+        if (std::cin.fail() || input <= 0.0) {
+            std::cout << "Invalid input! Please enter a positive number: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        } else {
+            return input;
+        }
+    }
+}
+
+
 
 
 
