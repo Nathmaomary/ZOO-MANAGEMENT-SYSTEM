@@ -424,6 +424,46 @@ if (choice == 11) {
     zoo.displaySummary();
 }
 
+void Exhibit::addAnimalsToExhibit(std::vector<Animal> newAnimals) {
+    exhibitAnimals.insert(exhibitAnimals.end(), newAnimals.begin(), newAnimals.end());
+}
+if (choice == 12) {
+    std::string exhibitName;
+    std::cout << "Enter exhibit name to add animals to: ";
+    std::cin >> exhibitName;
+
+    Exhibit* exhibit = nullptr;
+    for (auto& ex : zoo.getExhibits()) {
+        if (ex.getName() == exhibitName) {
+            exhibit = &ex;
+            break;
+        }
+    }
+
+    if (exhibit) {
+        int numAnimals;
+        std::cout << "How many animals would you like to add to this exhibit? ";
+        std::cin >> numAnimals;
+        std::vector<Animal> animalsToAdd;
+        for (int i = 0; i < numAnimals; ++i) {
+            std::string name, species;
+            int age;
+            std::cout << "Enter animal name: ";
+            std::cin >> name;
+            std::cout << "Enter animal species: ";
+            std::cin >> species;
+            std::cout << "Enter animal age: ";
+            std::cin >> age;
+            animalsToAdd.push_back(Animal(name, species, age));
+        }
+        exhibit->addAnimalsToExhibit(animalsToAdd);
+    } else {
+        std::cout << "Exhibit not found!\n";
+    }
+}
+
+
+
 
 
 
