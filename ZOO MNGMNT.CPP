@@ -45,6 +45,35 @@ public:
         }
     }
 };
+int main() {
+    Zoo zoo;
+    int choice;
+
+    while (true) {
+        std::cout << "1. Add Animal\n2. Display All Animals\n3. Exit\nChoose an option: ";
+        std::cin >> choice;
+
+        if (choice == 1) {
+            std::string name, species;
+            int age;
+            std::cout << "Enter animal name: ";
+            std::cin >> name;
+            std::cout << "Enter animal species: ";
+            std::cin >> species;
+            std::cout << "Enter animal age: ";
+            std::cin >> age;
+            Animal animal(name, species, age);
+            zoo.addAnimal(animal);
+        } else if (choice == 2) {
+            zoo.displayAllAnimals();
+        } else {
+            break;
+        }
+    }
+
+    return 0;
+}
+
 
 
 
