@@ -338,6 +338,52 @@ void Zoo::saveToFile(const std::string& filename) {
     std::cout << "Zoo data saved to " << filename << std::endl;
 }
 
+void Zoo::loadFromFile(const std::string& filename) {
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error opening file for reading!" << std::endl;
+        return;
+    }
+
+    std::string line;
+    while (getline(file, line)) {
+        if (line == "Animals:") {
+            while (getline(file, line) && !line.empty()) {
+                std::istringstream ss(line);
+                std::string name, species;
+                int age;
+                std::getline(ss, name, ',');
+                std::getline(ss, species, ',');
+                ss >> age;
+                animals.push_back(Animal(name, species, age));
+            }
+        } else if (line == "Employees:") {
+            while (getline(file, line) && !line.empty()) {
+                std::istringstream ss(line);
+                std::string name, role;
+                double salary;
+                std::getline(ss, name, ',');
+                std::getline(ss, role, ',');
+                ss >> salary;
+                employees.push_back(Employee(name, role, salary));
+            }
+        } else if (line == "Exhibits:") {
+            while (getline(file, line) && !line.empty()) {
+                std::istringstream ss(line);
+                std::string name;
+                double size;
+                std::getline(ss, name, ',');
+                ss >> size;
+                exhibits.push_back(Exhibit(name, size));
+            }
+        }
+    }
+
+    file.close();
+    std::cout << "Zoo data loaded from " << filename << std::endl;
+}
+
+
 
 
 
