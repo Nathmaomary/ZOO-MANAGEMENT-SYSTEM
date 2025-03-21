@@ -88,6 +88,35 @@ public:
         std::cout << "Employee Name: " << name << "\nRole: " << role << "\nSalary: $" << salary << std::endl;
     }
 };
+class Zoo {
+private:
+    std::vector<Animal> animals;
+    std::vector<Employee> employees;
+
+public:
+    void addAnimal(Animal newAnimal) {
+        animals.push_back(newAnimal);
+    }
+
+    void addEmployee(Employee newEmployee) {
+        employees.push_back(newEmployee);
+    }
+
+    void displayAllEmployees() {
+        for (const auto& employee : employees) {
+            employee.displayInfo();
+            std::cout << "------------------\n";
+        }
+    }
+
+    void displayAllAnimals() {
+        for (const auto& animal : animals) {
+            animal.displayInfo();
+            std::cout << "------------------\n";
+        }
+    }
+};
+
 
 
 
