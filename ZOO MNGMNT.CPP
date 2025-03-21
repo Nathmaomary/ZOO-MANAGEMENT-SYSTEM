@@ -209,6 +209,60 @@ public:
     }
 };
 
+int main() {
+    Zoo zoo;
+    int choice;
+
+    while (true) {
+        std::cout << "1. Add Animal\n2. Display All Animals\n3. Add Employee\n4. Display All Employees\n5. Add Exhibit\n6. Display All Exhibits\n7. Exit\nChoose an option: ";
+        std::cin >> choice;
+
+        if (choice == 1) {
+            std::string name, species;
+            int age;
+            std::cout << "Enter animal name: ";
+            std::cin >> name;
+            std::cout << "Enter animal species: ";
+            std::cin >> species;
+            std::cout << "Enter animal age: ";
+            std::cin >> age;
+            Animal animal(name, species, age);
+            zoo.addAnimal(animal);
+        } else if (choice == 2) {
+            zoo.displayAllAnimals();
+        } else if (choice == 3) {
+            std::string name, role;
+            double salary;
+            std::cout << "Enter employee name: ";
+            std::cin >> name;
+            std::cout << "Enter employee role: ";
+            std::cin >> role;
+            std::cout << "Enter employee salary: ";
+            std::cin >> salary;
+            Employee employee(name, role, salary);
+            zoo.addEmployee(employee);
+        } else if (choice == 4) {
+            zoo.displayAllEmployees();
+        } else if (choice == 5) {
+            std::string name;
+            double size;
+            std::cout << "Enter exhibit name: ";
+            std::cin >> name;
+            std::cout << "Enter exhibit size: ";
+            std::cin >> size;
+            Exhibit exhibit(name, size);
+            zoo.addExhibit(exhibit);
+        } else if (choice == 6) {
+            zoo.displayAllExhibits();
+        } else {
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
 
 
 
