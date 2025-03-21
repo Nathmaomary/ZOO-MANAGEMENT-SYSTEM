@@ -26,6 +26,26 @@ void setName(std::string newName) {
 std::string getName() {
     return name;
 }
+#include <vector>
+#include "Animal.h"
+
+class Zoo {
+private:
+    std::vector<Animal> animals;
+
+public:
+    void addAnimal(Animal newAnimal) {
+        animals.push_back(newAnimal);
+    }
+
+    void displayAllAnimals() {
+        for (const auto& animal : animals) {
+            animal.displayInfo();
+            std::cout << "------------------\n";
+        }
+    }
+};
+
 
 
 
