@@ -19,6 +19,14 @@ public:
         std::cout << "Animal Name: " << name << "\nSpecies: " << species << "\nAge: " << age << std::endl;
     }
 };
+void setName(std::string newName) {
+    name = newName;
+}
+
+std::string getName() {
+    return name;
+}
+
 
 
 
