@@ -462,6 +462,155 @@ if (choice == 12) {
     }
 }
 
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <limits>
+
+// Animal Class
+class Animal {
+private:
+    std::string name;
+    std::string species;
+    int age;
+
+public:
+    Animal(std::string name, std::string species, int age)
+        : name(name), species(species), age(age) {}
+
+    void displayInfo() const {
+        std::cout << "Animal Name: " << name << "\nSpecies: " << species << "\nAge: " << age << std::endl;
+    }
+
+    std::string getName() const { return name; }
+    void setName(const std::string& newName) { name = newName; }
+
+    std::string getSpecies() const { return species; }
+    void setSpecies(const std::string& newSpecies) { species = newSpecies; }
+
+    int getAge() const { return age; }
+    void setAge(int newAge) { age = newAge; }
+};
+
+// Employee Class
+class Employee {
+private:
+    std::string name;
+    std::string role;
+    double salary;
+
+public:
+    Employee(std::string name, std::string role, double salary)
+        : name(name), role(role), salary(salary) {}
+
+    void displayInfo() const {
+        std::cout << "Employee Name: " << name << "\nRole: " << role << "\nSalary: $" << salary << std::endl;
+    }
+};
+
+// Exhibit Class
+class Exhibit {
+private:
+    std::string name;
+    double size;
+    std::vector<Animal> exhibitAnimals;
+
+public:
+    Exhibit(std::string name, double size) : name(name), size(size) {}
+
+    void addAnimalToExhibit(const Animal& animal) {
+        exhibitAnimals.push_back(animal);
+    }
+
+    void displayInfo() const {
+        std::cout << "Exhibit Name: " << name << "\nSize: " << size << " square meters\n";
+        std::cout << "Animals in Exhibit:\n";
+        for (const auto& animal : exhibitAnimals) {
+            animal.displayInfo();
+            std::cout << "------------------\n";
+        }
+    }
+};
+
+// Zoo Class
+class Zoo {
+private:
+    std::vector<Animal> animals;
+    std::vector<Employee> employees;
+    std::vector<Exhibit> exhibits;
+
+public:
+    void addAnimal(const Animal& animal) {
+        animals.push_back(animal);
+    }
+
+    void addEmployee(const Employee& employee) {
+        employees.push_back(employee);
+    }
+
+    void addExhibit(const Exhibit& exhibit) {
+        exhibits.push_back(exhibit);
+    }
+
+    void removeAnimalByName(const std::string& name) {
+        auto it = std::remove_if(animals.begin(), animals.end(), 
+            [&name](const Animal& animal) { return animal.getName() == name; });
+        if (it != animals.end()) {
+            animals.erase(it, animals.end());
+            std::cout << "Animal " << name << " removed from the zoo.\n";
+        } else {
+            std::cout << "Animal " << name << " not found.\n";
+        }
+    }
+
+    void displayAllAnimals() const {
+        for (const auto& animal : animals) {
+            animal.displayInfo();
+            std::cout << "------------------\n";
+        }
+    }
+
+    void displayAllEmployees() const {
+        for (const auto& employee : employees) {
+            employee.displayInfo();
+            std::cout << "------------------\n";
+        }
+    }
+
+    void displayAllExhibits() const {
+        for (const auto& exhibit : exhibits) {
+            exhibit.displayInfo();
+            std::cout << "------------------\n";
+        }
+    }
+
+    void saveToFile(const std::string& filename) const {
+        std::ofstream file(filename);
+        if (!file.is_open()) {
+            std::cerr << "Error opening file for writing!" << std::endl;
+            return;
+        }
+
+        file << "Animals:\n";
+        for (const auto& animal : animals) {
+            file << animal.getName() << ", " << animal.getSpecies() << ", " << animal.getAge() << "\n";
+        }
+
+        file << "Employees:\n";
+        for (const auto& employee : employees) {
+            file << employee.getName() << ", " << employee.getRole() << ", " << employee.getSalary() << "\n";
+        }
+
+        file << "Exhibits:\n";
+        for (const auto& exhibit : exhibits) {
+            file << exhibit.getName() << ", " << exhibit.getSize() << "\n";
+        }
+
+        file.close();
+       
+
+
 
 
 
