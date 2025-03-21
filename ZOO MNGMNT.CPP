@@ -5,5 +5,21 @@ int main() {
     return 0;
 }
 
+class Animal {
+private:
+    std::string name;
+    std::string species;
+    int age;
+
+public:
+    Animal(std::string name, std::string species, int age) 
+        : name(name), species(species), age(age) {}
+
+    void displayInfo() {
+        std::cout << "Animal Name: " << name << "\nSpecies: " << species << "\nAge: " << age << std::endl;
+    }
+};
+
+
 
 
