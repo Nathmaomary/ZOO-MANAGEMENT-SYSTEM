@@ -293,6 +293,18 @@ double getValidDoubleInput() {
     }
 }
 
+void Zoo::removeAnimalByName(std::string name) {
+    for (auto it = animals.begin(); it != animals.end(); ++it) {
+        if (it->getName() == name) {
+            animals.erase(it);
+            std::cout << "Animal " << name << " removed from the zoo.\n";
+            return;
+        }
+    }
+    std::cout << "Animal " << name << " not found.\n";
+}
+
+
 
 
 
