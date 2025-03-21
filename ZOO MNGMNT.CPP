@@ -382,6 +382,18 @@ void Zoo::loadFromFile(const std::string& filename) {
     file.close();
     std::cout << "Zoo data loaded from " << filename << std::endl;
 }
+if (choice == 8) {
+    std::string filename;
+    std::cout << "Enter filename to save zoo data: ";
+    std::cin >> filename;
+    zoo.saveToFile(filename);
+} else if (choice == 9) {
+    std::string filename;
+    std::cout << "Enter filename to load zoo data: ";
+    std::cin >> filename;
+    zoo.loadFromFile(filename);
+}
+
 
 
 
