@@ -159,6 +159,31 @@ int main() {
     return 0;
 }
 
+class Exhibit {
+private:
+    std::string name;
+    double size;
+    std::vector<Animal> exhibitAnimals;
+
+public:
+    Exhibit(std::string name, double size)
+        : name(name), size(size) {}
+
+    void addAnimalToExhibit(Animal animal) {
+        exhibitAnimals.push_back(animal);
+    }
+
+    void displayInfo() {
+        std::cout << "Exhibit Name: " << name << "\nSize: " << size << " square meters\n";
+        std::cout << "Animals in Exhibit:\n";
+        for (const auto& animal : exhibitAnimals) {
+            animal.displayInfo();
+            std::cout << "------------------\n";
+        }
+    }
+};
+
+
 
 
 
